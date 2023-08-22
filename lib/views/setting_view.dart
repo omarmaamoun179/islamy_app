@@ -5,14 +5,13 @@ import 'package:islamy/widgets/theme_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SettingView extends StatefulWidget {
+class SettingView extends StatelessWidget {
   const SettingView({super.key});
 
-  @override
-  State<SettingView> createState() => _SettingViewState();
-}
+ 
 
-class _SettingViewState extends State<SettingView> {
+
+
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<settingsProvider>(context);
@@ -114,3 +113,4 @@ class _SettingViewState extends State<SettingView> {
     );
   }
 }
+
