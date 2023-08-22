@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/services/setting_provider.dart';
 import 'package:islamy/views/hadith_view.dart';
 import 'package:islamy/views/quran_view.dart';
-import 'package:islamy/views/radip_view.dart';
+import 'package:islamy/views/radio_view.dart';
 import 'package:islamy/views/sebha_view.dart';
 import 'package:islamy/views/setting_view.dart';
 import 'package:provider/provider.dart';
