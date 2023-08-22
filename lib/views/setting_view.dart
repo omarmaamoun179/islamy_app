@@ -8,10 +8,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SettingView extends StatelessWidget {
   const SettingView({super.key});
 
- 
-
-
-
   @override
   Widget build(BuildContext context) {
     var prov = Provider.of<settingsProvider>(context);
@@ -37,8 +33,9 @@ class SettingView extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               margin: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(.005),
-                border: Border.all(),
+                color: Colors.transparent,
+                border: Border.all(
+                    color: prov.isDark() ? theme.canvasColor : Colors.black),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,15 +69,17 @@ class SettingView extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               margin: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(.005),
-                border: Border.all(),
+                color: Colors.transparent,
+                border: Border.all(
+                    color: prov.isDark() ? theme.canvasColor : Colors.black),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                   
-                    prov.isDark()  ? AppLocalizations.of(context)!.dark : AppLocalizations.of(context)!.light,
+                    prov.isDark()
+                        ? AppLocalizations.of(context)!.dark
+                        : AppLocalizations.of(context)!.light,
                     style: theme.textTheme.bodyMedium,
                   ),
                   IconButton(
@@ -113,4 +112,3 @@ class SettingView extends StatelessWidget {
     );
   }
 }
-
