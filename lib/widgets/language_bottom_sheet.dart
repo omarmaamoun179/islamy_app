@@ -25,6 +25,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
             Container(
               child: InkWell(
                 onTap: () {
+                  Navigator.of(context).pop();
                   provider.changeEngLang();
                 },
                 child: provider.isEnglish()
@@ -39,6 +40,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
             ),
             InkWell(
               onTap: () {
+                 Navigator.of(context).pop();
                 provider.changeArabicLang();
               },
               child: !provider.isEnglish()
