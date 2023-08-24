@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islamy/services/setting_provider.dart';
 import 'package:provider/provider.dart';
 
 class SebhaView extends StatefulWidget {
@@ -17,10 +18,10 @@ class _SebhaViewState extends State<SebhaView> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    var prov =Provider.of<Settin>(context);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
+    var theme = Theme.of(context);
+    var prov = Provider.of<settingsProvider>(context);
 
     return Column(
       children: [
@@ -33,9 +34,9 @@ class _SebhaViewState extends State<SebhaView> {
               Positioned(
                 left: w * .48,
                 top: h * .05,
-                child: prov.isDark ? Image.asset(
-                  'assets/images/head of seb7a.png',
-                ),
+                child: Image.asset(prov.isDark()
+                    ? 'assets/images/dark_head_of_seb7a.png'
+                    : 'assets/images/head of seb7a.png'),
               ),
               Positioned(
                 top: h * .15,
@@ -43,7 +44,9 @@ class _SebhaViewState extends State<SebhaView> {
                 child: Transform.rotate(
                   angle: angel,
                   child: Image.asset(
-                    'assets/images/body of seb7a.png',
+                    prov.isDark()
+                        ? 'assets/images/dark body of seb7a.png'
+                        : 'assets/images/body of seb7a.png',
                     height: h * .22,
                   ),
                 ),
@@ -60,7 +63,7 @@ class _SebhaViewState extends State<SebhaView> {
           width: w * .15,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: const Color(0xffD0BC9F),
+            color: prov.isDark() ? theme.canvasColor : const Color(0xffD0BC9F),
           ),
           child: Text(
             count.toString(),
@@ -83,7 +86,9 @@ class _SebhaViewState extends State<SebhaView> {
               ChangeTasbeh();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xffB7935F),
+              backgroundColor: prov.isDark()
+                  ? theme.canvasColor.withOpacity(.9)
+                  : const Color(0xffD0BC9F),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -107,12 +112,12 @@ class _SebhaViewState extends State<SebhaView> {
   }
 
   void ChangeTasbeh() {
-    if (count == 34) {
+    if (count == 33) {
       tsbehat[index++];
       count = 0;
-    } if(index > 2){
+    }
+    if (index > 2) {
       index = 0;
     }
-    
   }
 }

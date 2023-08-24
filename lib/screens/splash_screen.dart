@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:islamy/constant/theme.dart';
 import 'package:islamy/screens/home_screen.dart';
+import 'package:islamy/services/setting_provider.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -10,13 +11,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var prov = Provider.of<settingsProvider>(context);
     Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     });
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage(AppTheme.themeMode == ThemeMode.dark
+            image: AssetImage(prov.isDark()
                 ? 'assets/images/splash_dark.png'
                 : 'assets/images/splash.png'),
             fit: BoxFit.fill),
