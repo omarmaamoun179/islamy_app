@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SebhaView extends StatefulWidget {
   const SebhaView({super.key});
@@ -16,6 +17,8 @@ class _SebhaViewState extends State<SebhaView> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    var prov =Provider.of<Settin>(context);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
 
@@ -30,7 +33,7 @@ class _SebhaViewState extends State<SebhaView> {
               Positioned(
                 left: w * .48,
                 top: h * .05,
-                child: Image.asset(
+                child: prov.isDark ? Image.asset(
                   'assets/images/head of seb7a.png',
                 ),
               ),
