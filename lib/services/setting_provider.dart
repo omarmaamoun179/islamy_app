@@ -2,21 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class settingsProvider extends ChangeNotifier {
-  ThemeMode currentTheme = ThemeMode.light;
+  ThemeMode currentTheme = ThemeMode.dark;
   Locale basicLang = const Locale('en');
   enableLightTheme() async {
     notifyListeners();
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool('theme', false);
-    return currentTheme = ThemeMode.light;
+   await saveTheme(true);
   }
 
   enableDarkTheme() async {
-    notifyListeners();
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool('theme', true);
-
-    return currentTheme = ThemeMode.dark;
+   
+   await saveTheme(false);
   }
 
   bool isDark() {
@@ -53,6 +48,17 @@ class settingsProvider extends ChangeNotifier {
     }
   }
 
- 
+  saveTheme(bool isDark) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool('theme', isDark);
+    currentTheme = isDark ? ThemeMode.light : ThemeMode.dark;
+    notifyListeners();
+  }
 
+  getTheme() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool theme = pref.getBool('theme') ?? false;
+    currentTheme = theme ? ThemeMode.light : ThemeMode.dark;
+    notifyListeners();
+  }
 }

@@ -28,8 +28,9 @@ class _ThemeBottomSheetWidgetState extends State<ThemeBottomSheetWidget> {
             Container(
               child: InkWell(
                 onTap: () {
-                   Navigator.of(context).pop();
+                  Navigator.of(context).pop();
                   provider.enableDarkTheme();
+                  provider.saveTheme(false);
                 },
                 child: provider.isDark()
                     ? SelectedItem(text: AppLocalizations.of(context)!.dark)
@@ -41,8 +42,9 @@ class _ThemeBottomSheetWidgetState extends State<ThemeBottomSheetWidget> {
             ),
             InkWell(
               onTap: () {
-                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
                 provider.enableLightTheme();
+                provider.saveTheme(true);
               },
               child: !provider.isDark()
                   ? SelectedItem(text: AppLocalizations.of(context)!.light)

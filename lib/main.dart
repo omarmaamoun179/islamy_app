@@ -14,22 +14,18 @@ void main() {
   runApp(ChangeNotifierProvider(
     child: const MyApp(),
     create: (context) {
-      return settingsProvider() ;
+      return settingsProvider()..getTheme();
     },
   ));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
     var provider = Provider.of<settingsProvider>(context);
+  
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
