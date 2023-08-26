@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:islamy/constant/theme.dart';
 import 'package:islamy/screens/home_screen.dart';
@@ -15,24 +14,26 @@ void main() {
   runApp(ChangeNotifierProvider(
     child: const MyApp(),
     create: (context) {
-      return settingsProvider();
+      return settingsProvider() ;
     },
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<settingsProvider>(context);
     return MaterialApp(
-    
-
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: provider.basicLang,
-
       debugShowCheckedModeBanner: false,
       theme: AppTheme.LightTheme,
       darkTheme: AppTheme.DarkTheme,

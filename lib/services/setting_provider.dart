@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class settingsProvider extends ChangeNotifier {
-  ThemeMode currentTheme = ThemeMode.system;
+  ThemeMode currentTheme = ThemeMode.light;
   Locale basicLang = const Locale('en');
-  enableLightTheme() {
+  enableLightTheme() async {
     notifyListeners();
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool('theme', false);
     return currentTheme = ThemeMode.light;
   }
 
-  enableDarkTheme() {
+  enableDarkTheme() async {
     notifyListeners();
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool('theme', true);
+
     return currentTheme = ThemeMode.dark;
   }
 
@@ -21,11 +27,6 @@ class settingsProvider extends ChangeNotifier {
     return currentTheme == ThemeMode.dark
         ? 'assets/images/dark_home_screen.png'
         : 'assets/images/bg3.png';
-    // if (isDark() == true) {
-    //   return 'assets/images/dark_home_screen.png';
-    // } else {
-    //   return 'assets/images/bg3.png';
-    // }
   }
 
   String changeSplahsScreen() {
@@ -51,4 +52,7 @@ class settingsProvider extends ChangeNotifier {
       return false;
     }
   }
+
+ 
+
 }
