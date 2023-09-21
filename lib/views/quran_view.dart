@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/constant/theme.dart';
+import 'package:islamy/core/theme.dart';
 import 'package:islamy/widgets/quran_widget.dart';
 
 class QuranView extends StatelessWidget {

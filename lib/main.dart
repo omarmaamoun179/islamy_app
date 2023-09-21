@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:islamy/constant/theme.dart';
+import 'package:islamy/core/theme.dart';
 import 'package:islamy/screens/home_screen.dart';
 import 'package:islamy/screens/splash_screen.dart';
 import 'package:islamy/services/setting_provider.dart';
@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<settingsProvider>(context);
   
     return MaterialApp(
+
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: provider.basicLang,
